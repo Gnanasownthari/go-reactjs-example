@@ -1,5 +1,5 @@
 pipeline {
-  agent any
+  agent none
   stages {
     stage('Install') {
       steps {
@@ -10,6 +10,12 @@ pipeline {
     stage('Build') {
       steps {
         echo 'Build sucessfully'
+      }
+    }
+
+    stage('Report') {
+      steps {
+        junit(healthScaleFactor: 2, testResults: 'none')
       }
     }
 
